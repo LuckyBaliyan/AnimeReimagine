@@ -3,14 +3,12 @@ import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import Loader from './Loader';
 
 const Hero = () => {
     const [currentIndex,setCurrentIndex] = useState(1);
     const [isClicked,setIsClick] = useState(false);
     const [loading,setLoading] = useState(true);
     const [loadedVideo,setLoadedVideo] = useState(0);
-    const [isLoaded,setIsLoaded] = useState(false);
     
     const totalVideos = 4;
     const {contextSafe} = useGSAP();
@@ -21,13 +19,6 @@ const Hero = () => {
     const nextVidRef = useRef(null);
     const currentVidRef = useRef(null);
     const headingRef = useRef([]);
-
-    Promise.all([
-        document.fonts.ready,
-        new Promise((resolve) => {
-          window.onload = resolve; // waits for images + videos + fonts
-        })
-    ]).then(() => setIsLoaded(true));
 
 
     const handleMiniVideoClick = contextSafe(()=>{
@@ -80,7 +71,6 @@ const Hero = () => {
 
   return (
     <div className='relative h-dvh w-screen overflow-x-hidden'>
-        {!isLoaded?<Loader />:
         <div id="video-frame" className='relative z-10 h-dvh w-screen
         overflow-hidden bg-[var(--blue-75)] '>
             <div>
@@ -148,7 +138,6 @@ const Hero = () => {
                 </div>
             </div>
         </div>
-        }
         <div  className='mask absolute bottom-5 right-5'>
             <h1 className='hero-heading
               text-black  will-change-[transform]'>
