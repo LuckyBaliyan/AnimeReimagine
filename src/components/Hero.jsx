@@ -1,6 +1,8 @@
 import React, { useState,useRef } from 'react'
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const Hero = () => {
     const [currentIndex,setCurrentIndex] = useState(1);
@@ -9,16 +11,18 @@ const Hero = () => {
     const [loadedVideo,setLoadedVideo] = useState(0);
     
     const totalVideos = 4;
+    const {contextSafe} = useGSAP();
     
     // 0%4 = 0 + 1 = 1
     // 4 % 4 = 0 + 1 = 1
     const upcomingVideoIndex = (currentIndex%totalVideos)+1;
     const nextVidRef = useRef(null);
+    const currentVidRef = useRef(null);
 
-    const handleMiniVideoClick = ()=>{
+    const handleMiniVideoClick = contextSafe(()=>{
         setIsClick(true);
         setCurrentIndex(upcomingVideoIndex);
-    }
+    })
 
     const handleVideoLoad = ()=>{
         setLoadedVideo((prev)=>prev+1)
@@ -26,23 +30,53 @@ const Hero = () => {
 
     const getVidSource = (index)=> `videos/hero-${index}.mp4`;
 
+    useGSAP(()=>{
+        if(window.innerWidth < 1024) return;
+        if(isClicked){
+            let tl = gsap.timeline({});
+
+            tl.set('#next-video',{opacity:1});
+            tl.to('#next-video',{
+                transformOrigin:'center center',
+                scale:1,
+                width:'100%',
+                height:'100%',
+                duration:1,
+                ease:'power1.inOut',
+                onStart: () => {
+                    if (nextVidRef.current) {
+                      nextVidRef.current.currentTime = 0; // force ready frame
+                      nextVidRef.current.play();
+                    }
+                }
+            })
+            .from(currentVidRef.current,{
+            transformOrigin:'center center',
+            scale:0,
+            duration:1.5,
+            ease:'power1.inOut',
+        },"-=0.5")
+    }
+
+    },{dependencies:[currentIndex],revertOnUpdate:true});
+
   return (
     <div className='relative h-dvh w-screen overflow-x-hidden'>
         <div id="video-frame" className='relative z-10 h-dvh w-screen
-        overflow-hidden bg-[var(--blue-75)]'>
+        overflow-hidden bg-[var(--blue-75)] bg-[url("/images/about.webp")] bg-cover bg-center'>
             <div>
                 <div className="mask-clip-path absolute-center absolute
                 z-50 size-64 cursor-pointer overflow-hidden rounded-lg"
                >
-                 <div onClick={handleMiniVideoClick} className='origin-center
+                 <div onClick={handleMiniVideoClick} className='hidden md:block origin-center
                  scale-50 opacity-0 transition-all duration-500 ease-in-out
                  hover:scale-100 hover:opacity-100'>
                    <div className='origin-center'>
-                     <video ref={nextVidRef} 
+                     <video ref={currentVidRef} 
                      src={getVidSource(upcomingVideoIndex)}
                      loop id='current-video'
                      className='size-64 object-cover origin-center
-                     scale-150 object-center'
+                     scale-150 object-center will-change-[transform,opacity]'
                      onLoadedData={handleVideoLoad}/>
                    </div>
                   </div>
@@ -55,7 +89,7 @@ const Hero = () => {
                 id='next-video'
                 className='absolute-center absolute
                 z-20 size-64 object-cover object-center
-                invisible'
+                opacity-0 will-change-[transform,opacity]'
                 onLoadedData={handleVideoLoad}/>
                 <video
                 src={getVidSource(currentIndex === totalVideos -1?
@@ -69,9 +103,9 @@ const Hero = () => {
                 onLoadedData={handleVideoLoad}
                 />
             </div>
-           <div className='mask absolute bottom-5 right-5'>
+           <div className='mask absolute bottom-5 right-5 z-40'>
             <h1 className='hero-heading
-             z-40 text-[var(--blue-75)] translate-y-[0%]'>
+             text-[var(--blue-75)] translate-y-[0%]'>
                 G<b className='text-orange-500'>a</b>ming
             </h1>
             </div>
@@ -92,6 +126,12 @@ const Hero = () => {
                 />
                 </div>
             </div>
+        </div>
+        <div className='mask absolute bottom-5 right-5'>
+            <h1 className='hero-heading
+              text-black translate-y-[0%]'>
+                G<b className='text-orange-500'>a</b>ming
+            </h1>
         </div>
     </div>
   )
