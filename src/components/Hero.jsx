@@ -39,7 +39,7 @@ const Hero = () => {
             delay:0.5,  
         },[]);
 
-        if(window.innerWidth < 1024) return;
+        if(window.innerWidth <= 640) return;
         if(isClicked){
             let tl = gsap.timeline({});
 
