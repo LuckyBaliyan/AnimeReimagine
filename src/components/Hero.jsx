@@ -18,6 +18,7 @@ const Hero = () => {
     const upcomingVideoIndex = (currentIndex%totalVideos)+1;
     const nextVidRef = useRef(null);
     const currentVidRef = useRef(null);
+    const headingRef = useRef([]);
 
     const handleMiniVideoClick = contextSafe(()=>{
         setIsClick(true);
@@ -28,9 +29,16 @@ const Hero = () => {
         setLoadedVideo((prev)=>prev+1)
     }
 
-    const getVidSource = (index)=> `videos/hero-${index}.mp4`;
+    const getVidSource = (index)=> `videos/hero-${index}-${index}.mp4`;
 
     useGSAP(()=>{
+        gsap.to(headingRef.current,{
+            y:0,
+            duration:0.8,
+            ease:'ease.out',
+            delay:0.5,  
+        },[]);
+
         if(window.innerWidth < 1024) return;
         if(isClicked){
             let tl = gsap.timeline({});
@@ -75,6 +83,7 @@ const Hero = () => {
                      <video ref={currentVidRef} 
                      src={getVidSource(upcomingVideoIndex)}
                      loop id='current-video'
+                     preload='auto'
                      className='size-64 object-cover origin-center
                      scale-150 object-center will-change-[transform,opacity]'
                      onLoadedData={handleVideoLoad}/>
@@ -87,6 +96,7 @@ const Hero = () => {
                 loop
                 muted
                 id='next-video'
+                preload='metadata'
                 className='absolute-center absolute
                 z-20 size-64 object-cover object-center
                 opacity-0 will-change-[transform,opacity]'
@@ -103,9 +113,9 @@ const Hero = () => {
                 onLoadedData={handleVideoLoad}
                 />
             </div>
-           <div className='mask absolute bottom-5 right-5 z-40'>
-            <h1 className='hero-heading
-             text-[var(--blue-75)] translate-y-[0%]'>
+           <div  className='mask absolute bottom-5 right-5 z-40'>
+            <h1   ref={(el)=>headingRef.current[0] = el} className='hero-heading
+             text-[var(--blue-75)] translate-y-[100%] will-change-[transform]'>
                 G<b className='text-orange-500'>a</b>ming
             </h1>
             </div>
@@ -113,7 +123,7 @@ const Hero = () => {
             <div className='absolute left-0 top-0 z-40 size-full'>
                 <div className='hero-heading mt-24 px-5 sm:px-10'>
                 <div className='mask'>
-                    <h1 className='text-[var(--blue-75)] translate-y-[0%]'>Reim<b className='text-orange-500'>a</b>gine</h1>
+                    <h1 ref={(el)=>headingRef.current[1] = el} className='text-[var(--blue-75)] translate-y-[100%]'>Reim<b className='text-orange-500'>a</b>gine</h1>
                 </div>
                 <p className='mb-5 mt-2 max-w-64 text-base lg:text-2xl font-["robert-regular"]
                 text-[var(--blue-75)] leading-[1.1]'>
@@ -127,10 +137,10 @@ const Hero = () => {
                 </div>
             </div>
         </div>
-        <div className='mask absolute bottom-5 right-5'>
+        <div  className='mask absolute bottom-5 right-5'>
             <h1 className='hero-heading
-              text-black translate-y-[0%]'>
-                G<b className='text-orange-500'>a</b>ming
+              text-black  will-change-[transform]'>
+                G<b>a</b>ming
             </h1>
         </div>
     </div>
