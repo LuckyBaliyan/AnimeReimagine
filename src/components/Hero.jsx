@@ -1,8 +1,12 @@
-import React, { useState,useRef } from 'react'
+import React, { useState,useRef, useEffect } from 'react'
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import Loader from './Loader';
+import { ScrollTrigger } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const [currentIndex,setCurrentIndex] = useState(1);
@@ -32,11 +36,18 @@ const Hero = () => {
 
     const getVidSource = (index)=> `videos/${index}.mp4`;
 
+    useEffect(()=>{
+        if(loadedVideo === totalVideos - 1){
+            setLoading(false);
+        }
+    },[loadedVideo])
+
     useGSAP(()=>{
         gsap.to(headingRef.current,{
             y:0,
+            stagger:0.08,
             duration:0.8,
-            ease:'ease.out',
+            ease:'bounce.out',
             delay:0.5,  
         },[]);
 
@@ -69,10 +80,46 @@ const Hero = () => {
 
     },{dependencies:[currentIndex],revertOnUpdate:true});
 
+
+    useGSAP(()=>{
+        if(window.innerWidth < 1024){
+            gsap.set('#video-frame',{
+                //clipPath:'polygon(0 0, 100% 0, 84% 78%, 15% 77%)',
+                clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)'
+            })
+        }
+        else{
+       gsap.set('#video-frame',{
+        clipPath:"polygon(14% 0%,70% 0%,90% 90%,0% 100%)",
+        borderRadius:'24px',
+        scale:1,
+       })
+      }
+
+       gsap.from('#video-frame',{
+        clipPath:'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
+        borderRadius:'0 0 0 0',
+        ease:"power1.inOut",
+        scrollTrigger:{
+            trigger:'#main',
+            start:'center center',
+            end:'bottom center',
+            scrub:true,
+            pin:true,
+        },
+       })
+    })
+
+
   return (
-    <div className='relative h-dvh w-screen overflow-x-hidden'>
+    <>
+    <div className='fixed flex-center z-[100] h-dvh w-screen overflow-hidden pointer-events-none'>
+       <Loader loadingState={loading}/>
+    </div>
+    <div id="main" className='relative h-dvh w-screen overflow-x-hidden'>
+        <h1 className='hero-heading text-[var(--blue-50)] absolute top-0 left-0 mt-2 ml-3'>Reimagine</h1>
         <div id="video-frame" className='relative z-10 h-dvh w-screen
-        overflow-hidden bg-black'>
+        overflow-hidden bg-[#121212] will-change-[clip-path]'>
             <div>
                 <div className="mask-clip-path absolute-center absolute
                 z-50 size-64 cursor-pointer overflow-hidden rounded-lg object-cover object-center"
@@ -116,7 +163,7 @@ const Hero = () => {
             </div>
            <div  className='mask absolute bottom-5 right-5 z-40 mix-blend-difference'>
             <h1   ref={(el)=>headingRef.current[0] = el} className='hero-heading
-             text-[var(--blue-75)] translate-y-[100%] will-change-[transform]'>
+             text-[var(--blue-75)] translate-y-[100%]  will-change-[transform]'>
                 A<b className='text-orange-500'>N</b>IME
             </h1>
             </div>
@@ -124,7 +171,7 @@ const Hero = () => {
             <div className='absolute left-0 top-0 z-40 size-full mix-blend-difference'>
                 <div className='hero-heading mt-24 px-5 sm:px-10 '>
                 <div className='mask mix-blend-difference'>
-                    <h1 ref={(el)=>headingRef.current[1] = el} className='text-white translate-y-[100%] '>
+                    <h1 ref={(el)=>headingRef.current[1] = el} className='text-white translate-y-[-100%] '>
                         Reim<b className='text-orange-500'>a</b>gine</h1>
                 </div>
                 <p className='mb-5 mt-2 max-w-64 text-base lg:text-2xl font-["robert-regular"]
@@ -134,18 +181,19 @@ const Hero = () => {
                 </p>
                 <Button id="watch-trailer" title={"Watch Trailer"}
                 leftIcon={<TiLocationArrow className='text-xl' />} classContainer=
-                {'bg-[var(--yellow-300)] flex flex-center gap-1'}
+                {'bg-orange-500 flex flex-center gap-1'}
                 />
                 </div>
             </div>
         </div>
         <div  className='mask absolute bottom-5 right-5'>
             <h1 className='hero-heading
-              text-black  will-change-[transform]'>
+              text-[var(--blue-50)]  will-change-[transform]'>
                 ANIME
             </h1>
         </div>
     </div>
+   </>
   )
 }
 

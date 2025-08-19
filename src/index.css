@@ -5,7 +5,11 @@
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #dfdff0;
+  /*background-color: #dfdff0;*/
+  background-size: 170px 170px;
+  background-color: #222222;
+  background-image:  linear-gradient(to right, rgba(227, 95, 68, 0.551) 0.1px, transparent 2px),
+    linear-gradient(to bottom, rgba(227, 95, 68, 0.567) 0.1px, transparent 2px);
   font-family: "General Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -19,6 +23,7 @@ body {
   --voilet-300: #5724FF;
   --yellow-100: #8E983F;
   --yellow-300: #EDFF66;
+  --accentText: rgba(227, 95, 68, 0.567);
 }
 
 @layer base {
@@ -289,4 +294,9 @@ body {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
   }
+}
+
+.loaderMask{
+  clip-path: inset(0 0 0 0);
+  will-change: clip-path;
 }
