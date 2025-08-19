@@ -85,7 +85,8 @@ const Hero = () => {
         if(window.innerWidth < 1024){
             gsap.set('#video-frame',{
                 //clipPath:'polygon(0 0, 100% 0, 84% 78%, 15% 77%)',
-                clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)'
+                //clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)'
+                clipPath:'polygon(14% 0, 100% 0, 82% 100%, 9% 74%)'
             })
         }
         else{
