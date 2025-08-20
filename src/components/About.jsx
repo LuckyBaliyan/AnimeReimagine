@@ -72,7 +72,7 @@ const About = () => {
                     <div className='absolute top-0 left-5 mask'>
                         <h1 className='hero-heading text-[#121212]  mask translate-y-[100%] h-up'>Explore</h1>
                     </div>
-                    <div className='absolute bottom-0 right-5'>
+                    <div className='absolute bottom-10 right-5'>
                         <div className='mask ml-auto'><h1 className='text-[#121212] translate-y-[100%] hero-heading  h-up text-end'>The</h1></div>
                         <div className='mask'><h1 className='text-[#121212] translate-y-[100%] hero-heading h-up'>Collection</h1></div>
                     </div>
