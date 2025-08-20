@@ -96,8 +96,11 @@ const Hero = () => {
         }
         else{
        gsap.set('#video-frame',{
-        clipPath:"polygon(14% 0%,70% 0%,90% 90%,0% 100%)",
-        scale:0.45,
+        //clipPath:"polygon(14% 0%,70% 0%,90% 90%,0% 100%)",
+        //clipPath:' polygon(14% 0%, 77% 33%, 85% 64%, 8% 66%)',
+        clipPath:'polygon(0 0, 100% 0, 84% 78%, 15% 77%)',
+        //clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)',
+        scale:1,
        })
        }
 
@@ -121,7 +124,7 @@ const Hero = () => {
        <Loader loadingState={loading}/>
     </div>
     <div id="main" className='relative h-dvh w-screen overflow-hidden'>
-        <h1 className='hero-heading text-[var(--blue-50)] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
+        <h1 className='hero-heading text-[#0d0d0d] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
             gine</h1>
         <div id="video-frame" className='relative top-0 z-10 w-[110%] h-[110%] md:h-dvh md:w-screen
         overflow-hidden bg-[#121212] will-change-[clip-path]'>
@@ -193,7 +196,7 @@ const Hero = () => {
         </div>
         <div  className='mask absolute bottom-8 md:bottom-5 right-5'>
             <h1 className='hero-heading
-              text-[var(--blue-50)]  will-change-[transform]'>
+              text-[#0d0d0d]  will-change-[transform]'>
                 ANIME
             </h1>
         </div>

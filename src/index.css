@@ -6,12 +6,44 @@ body {
   width: 100dvw;
   overflow-x: hidden;
   /*background-color: #dfdff0;*/
-  background-size: 170px 170px;
+ /* background-size: 170px 170px;
   background-color: #222222;
   background-image:  linear-gradient(to right, rgba(227, 95, 68, 0.551) 0.1px, transparent 2px),
-    linear-gradient(to bottom, rgba(227, 95, 68, 0.567) 0.1px, transparent 2px);
+    linear-gradient(to bottom, rgba(227, 95, 68, 0.567) 0.1px, transparent 2px);*/
+  /* Light Blue Palette */
+  /*background-color: #eaf4fc; /* soft light blue 
+  background-size: 170px 170px;
+  background-image: 
+    linear-gradient(to right, rgba(100, 181, 246, 0.5) 0.5px, transparent 2px),
+    linear-gradient(to bottom, rgba(100, 181, 246, 0.5) 0.5px, transparent 2px);*/
+  /*background-color: #e0f7f9;
+  background-size: 170px 170px;
+  background-image: 
+  linear-gradient(to right, rgba(77, 182, 172, 0.45) 0.5px, transparent 2px),
+  linear-gradient(to bottom, rgba(77, 182, 172, 0.45) 0.5px, transparent 2px);*/
+  /*background-color: #f4f0fa;
+  background-size: 170px 170px;
+  background-image: 
+  linear-gradient(to right, rgba(171, 123, 248, 0.35) 0.5px, transparent 2px),
+  linear-gradient(to bottom, rgba(171, 123, 248, 0.35) 0.5px, transparent 2px);*/
+  /*background-color: #0d1117; /* deep navy 
+  background-size: 180px 180px;
+  background-image: 
+  linear-gradient(to right, rgba(0, 153, 255, 0.15) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(0, 153, 255, 0.15) 1px, transparent 1px);*/
+  /*background-color: #111111;
+background-image: 
+  linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+background-size: 120px 120px;*/
+  background-color: #edf2ff;
+  background-size: 180px 180px;
+  background-image: 
+    linear-gradient(to right, rgba(120, 180, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 180, 255, 0.25) 1px, transparent 1px);
   font-family: "General Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar{
@@ -64,7 +96,7 @@ body {
 
   .nav-hover-btn {
     @apply relative ms-10  text-xs font-[general] uppercase text-blue-50 
-    after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full
+    after:absolute after:-bottom-0.5 after:left-0 after:h-[1px] after:w-full
      after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform 
      after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left 
      hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
