@@ -48,8 +48,11 @@ const Hero = () => {
             stagger:0.08,
             duration:0.8,
             ease:'bounce.out',
-            delay:0.5,  
+            delay:2,  
         },[]);
+    },[loading,setLoading]);
+
+    useGSAP(()=>{
 
         if(window.innerWidth < 1024) return;
         if(isClicked){
@@ -188,7 +191,7 @@ const Hero = () => {
                 </div>
             </div>
         </div>
-        <div  className='mask absolute bottom-5 right-5'>
+        <div  className='mask absolute bottom-8 md:bottom-5 right-5'>
             <h1 className='hero-heading
               text-[var(--blue-50)]  will-change-[transform]'>
                 ANIME
