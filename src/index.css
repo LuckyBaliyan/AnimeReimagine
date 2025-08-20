@@ -14,6 +14,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+::-webkit-scrollbar{
+  width:0;
+}
+
 :root {
   --blue-50: #DFDFF0;
   --blue-75: #DFDFF2;
