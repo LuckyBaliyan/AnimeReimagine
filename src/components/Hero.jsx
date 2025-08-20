@@ -117,7 +117,7 @@ const Hero = () => {
     <div className='fixed flex-center z-[100] h-dvh w-screen overflow-hidden pointer-events-none'>
        <Loader loadingState={loading}/>
     </div>
-    <div id="main" className='relative h-dvh w-screen overflow-x-hidden'>
+    <div id="main" className='relative h-dvh w-screen overflow-hidden'>
         <h1 className='hero-heading text-[var(--blue-50)] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
             gine</h1>
         <div id="video-frame" className='relative top-0 z-10 w-[110%] h-[110%] md:h-dvh md:w-screen
