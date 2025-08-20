@@ -82,35 +82,33 @@ const Hero = () => {
 
 
     useGSAP(()=>{
-        if(window.innerWidth >= 1024){
-        /*if(window.innerWidth < 1024){
+        if(window.innerWidth < 1024){
             gsap.set('#video-frame',{
                 //clipPath:'polygon(0 0, 100% 0, 84% 78%, 15% 77%)',
                 //clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)'
-                clipPath:'polygon(14% 0, 100% 0, 82% 100%, 9% 74%)'
+                //clipPath:'polygon(14% 0, 100% 0, 82% 100%, 9% 74%)'
+                clipPath:' polygon(21% 34%, 77% 33%, 85% 64%, 8% 66%)',
             })
-        }*/
-        //else{
+        }
+        else{
        gsap.set('#video-frame',{
         clipPath:"polygon(14% 0%,70% 0%,90% 90%,0% 100%)",
         borderRadius:'24px',
         scale:1,
        })
-     // }
+      }
 
        gsap.from('#video-frame',{
         clipPath:'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
         borderRadius:'0 0 0 0',
         ease:"power1.inOut",
         scrollTrigger:{
-            trigger:'#main',
+            trigger:'#video-frame',
             start:'center center',
             end:'bottom center',
             scrub:true,
-            pin:true,
         },
        })
-      }
     })
 
 
