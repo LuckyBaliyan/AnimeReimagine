@@ -87,7 +87,7 @@ const Hero = () => {
                 //clipPath:'polygon(0 0, 100% 0, 84% 78%, 15% 77%)',
                 //clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)'
                 //clipPath:'polygon(14% 0, 100% 0, 82% 100%, 9% 74%)'
-                clipPath:' polygon(21% 34%, 77% 33%, 85% 64%, 8% 66%)',
+                clipPath:' polygon(14% 0%, 77% 33%, 85% 64%, 8% 66%)',
             })
         }
         else{
@@ -122,7 +122,7 @@ const Hero = () => {
         <h1 className='hero-heading text-[var(--blue-50)] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
             gine</h1>
         <div id="video-frame" className='relative top-0 z-10 h-dvh w-screen
-        overflow-hidden bg-[#121212] will-change-[clip-path]'>
+        overflow-hidden bg-[#121212] will-change-[clip-path] lg:'>
             <div>
                 <div className="mask-clip-path absolute-center absolute
                 z-50 size-64 cursor-pointer overflow-hidden rounded-lg object-cover object-center"
