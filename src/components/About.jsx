@@ -67,7 +67,7 @@ const About = () => {
             </div>
         </div>
         <div className='h-dvh w-screen' id='clip'>
-            <div className="mask-clip-path  about-image relative">
+            <div className="mask-clip-path scale-y-110 md:scale-y-100  about-image relative">
                 <div className="overlay absolute top-0 left-0 w-full h-full z-[10]">
                     <div className='absolute top-0 left-5 mask'>
                         <h1 className='hero-heading text-[#121212]  mask translate-y-[100%] h-up'>Explore</h1>
