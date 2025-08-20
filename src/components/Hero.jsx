@@ -103,10 +103,11 @@ const Hero = () => {
         borderRadius:'0 0 0 0',
         ease:"power1.inOut",
         scrollTrigger:{
-            trigger:'#video-frame',
+            trigger:'#main',
             start:'center center',
             end:'bottom center',
             scrub:true,
+            pin:true,
         },
        })
     })
@@ -118,7 +119,8 @@ const Hero = () => {
        <Loader loadingState={loading}/>
     </div>
     <div id="main" className='relative h-dvh w-screen overflow-x-hidden'>
-        <h1 className='hero-heading text-[var(--blue-50)] absolute top-0 left-0 mt-2 ml-3'>Reimagine</h1>
+        <h1 className='hero-heading text-[var(--blue-50)] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
+            gine</h1>
         <div id="video-frame" className='relative top-0 z-10 h-dvh w-screen
         overflow-hidden bg-[#121212] will-change-[clip-path]'>
             <div>
