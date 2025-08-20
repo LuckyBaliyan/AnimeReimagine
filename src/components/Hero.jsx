@@ -97,7 +97,7 @@ const Hero = () => {
         else{
        gsap.set('#video-frame',{
         clipPath:"polygon(14% 0%,70% 0%,90% 90%,0% 100%)",
-        scale:0.65,
+        scale:0.45,
        })
        }
 
