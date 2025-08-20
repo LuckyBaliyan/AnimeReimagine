@@ -1,17 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {useRef} from 'react';
 import Button from './Button';
 import { TiLocation, TiLocationArrow } from 'react-icons/ti';
 
 const NavBar = () => {
 
-    const navContainerRef = useRef(null);
+    const [isAudioPlaying,setIsAudioPlaying] = useState(false);
+    const [isIndicatorActive,setIsIndicatorActive] = useState(false);
 
+    const navContainerRef = useRef(null);
     const navItems = ['Home','About','Contact','Github'];
+
+    const audioElement = useRef(null);
+
+    const toggleAudioIndicator  = ()=>{
+        setIsAudioPlaying(prev=>!prev)
+        setIsIndicatorActive(prev=>!prev);
+    }
+
+    useEffect(()=>{
+      if(isAudioPlaying){
+        audioElement.current.play();
+      }else{
+        audioElement.current.pause();
+      }
+    },[isAudioPlaying])
 
   return (
     <div ref={navContainerRef} className='fixed inset-x-0 top-4 z-50 h-16 border-none transition-all
-    duration-700 sm:inset-x-6'>
+    duration-700 sm:inset-x-6 mix-blend-difference'>
        <header className='absolute top-1/2 w-full -translate-y-1/2 '>
        <nav className="flex size-full items-center justify-between p-4">
         <div className="flex items-center gap-7">
@@ -33,6 +50,14 @@ const NavBar = () => {
                     ))
                 }
             </div>
+            <button className='ml-10 flex items-center space-x-0.5' onClick={toggleAudioIndicator}>
+                <audio ref={audioElement} src='/audio/1.mp3'
+                loop />
+                {[1,2,3,4].map((bar)=>(
+                    <div key={bar}className={`indicator-line cursor-pointer ${isIndicatorActive?'active':''}`}
+                    style={{animationDelay:`${bar*0.2}s`}} />
+                ))}
+            </button>
         </div>
        </nav>
        </header>
