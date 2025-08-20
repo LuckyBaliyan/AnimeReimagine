@@ -122,7 +122,7 @@ const Hero = () => {
         <h1 className='hero-heading text-[var(--blue-50)] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
             gine</h1>
         <div id="video-frame" className='relative top-0 z-10 h-dvh w-screen
-        overflow-hidden bg-[#121212] will-change-[clip-path] lg:'>
+        overflow-hidden bg-[#121212] will-change-[clip-path] -mt-2 md:mt-0'>
             <div>
                 <div className="mask-clip-path absolute-center absolute
                 z-50 size-64 cursor-pointer overflow-hidden rounded-lg object-cover object-center"
