@@ -9,7 +9,7 @@ const Story = () => {
             <p className='font-["general"] text-center border-0 text-sm uppercase md:text-[10px]"]
             '>The Multiversal World Of Infinite Possibilities</p>
             <div className='relative size-full'>
-                <h1 className='hero-heading !leading-[0.9] !text-[4rem] md:!text-6xl mt-5 md:tracking-tight lg:!text-9xl text-center'>
+                <h1 className='hero-heading !leading-[0.9] !text-[4rem] md:!text-8xl mt-5 md:tracking-tight lg:!text-9xl text-center'>
                     The St<b>o</b>ry Of A <br />
                     Hidden Realm
                 </h1>
