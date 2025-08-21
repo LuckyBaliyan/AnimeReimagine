@@ -4,6 +4,7 @@ import useLenisScroll from './hooks/lenis/useLenis'
 import About from './components/About';
 import NavBar from './components/NavBar';
 import Features from './components/Features';
+import Story from './components/Story';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Hero />
         <About/>
         <Features/>
+        <Story />
     </main>
   )
 }

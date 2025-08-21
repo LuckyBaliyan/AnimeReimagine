@@ -1,7 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from './Card';
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
+import { useRef } from 'react';
+
+const CardTilt = ({children,className=''})=>{
+   const [transfromStyle,setTransformStyle] = useState('');
+   
+   const itemRef = useRef(null);
+   
+   const handleMouseMove = (e)=>{
+       if(!itemRef.current) return;
+   
+       const { left, top, height, width} = itemRef.current.getBoundingClientRect();
+   
+       const relativeX = (e.clientX - left) / width;
+       const relativeY = (e.clientY - top) / height;
+   
+       const tiltX = (relativeY - 0.5)* 10;
+       const tiltY = (relativeX - 0.5)* -10;
+   
+       const newTransform = `perspective(700px) rotateX(${tiltX}deg)
+       rotateY(${tiltY}deg) scale(0.95)`;
+   
+       setTransformStyle(newTransform);
+   }
+   
+   const handleMouseLeave = (e)=>{
+    setTransformStyle('');
+   }
+
+return(
+    <div ref={itemRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} 
+    className={className} style={{transform:transfromStyle}}>
+        {children}
+    </div>
+  )
+}
 
 const Features = () => {
   return (
@@ -17,7 +52,7 @@ const Features = () => {
                     stories breathe with emotion, and pixels rise as legends in timeless journeys.
                 </p>
             </div>
-        <div className='border-hsla relative mb-7 h-96 w-full overflow-hidden 
+        <CardTilt className='border-hsla relative mb-7 h-96 w-full overflow-hidden 
         rounded-md md:h-[65vh]'>
             <Card 
             src='videos/video.mp4'
@@ -27,10 +62,10 @@ const Features = () => {
             ad-free anime across every device — web, mobile, and TV."
             isCommingSoon={false}
             />
-        </div>
+        </CardTilt>
         <div className='flex flex-wrap lg:flex-nowrap h-auto
         gap-7'>
-            <div className="lg:w-1/3 w-full h-[50vh] lg:h-[80vh] rounded-md border-hsla overflow-hidden card">
+            <CardTilt className="lg:w-1/3 w-full h-[60vh] lg:h-[80vh] rounded-md border-hsla overflow-hidden card">
                 <Card 
                 src={'videos/feature-2.mp4'}
                 title={<>Ke<b>n</b>to Na<b>n</b>ami</>}
@@ -40,8 +75,8 @@ const Features = () => {
                 alongside the legendary Satoru Gojo and Suguru Geto. But Nanami's journey diverged early."
                 isCommingSoon={"JJK"}
                 />
-            </div>
-            <div className="lg:w-2/3 w-full h-[60vh] lg:h-[80vh] rounded-md border-hsla overflow-hidden card">
+            </CardTilt>
+            <CardTilt className="lg:w-2/3 w-full h-[60vh] lg:h-[80vh] rounded-md border-hsla overflow-hidden card">
                 <Card 
                 src={'videos/anim2.mp4'}
                 title={<>Mad<b>a</b>ra uchih<b>a</b></>}
@@ -51,11 +86,11 @@ const Features = () => {
                 of the manga and the Shippuden anime adaptation"
                 isCommingSoon={"Naruto Shippuden"}
                 />
-            </div>
+            </CardTilt>
         </div>
         <div className='flex flex-wrap mt-7 lg:flex-nowrap h-auto
         gap-7'>
-            <div className="lg:w-1/3 w-full h-[50vh] lg:h-[80vh] rounded-md border-hsla overflow-hidden card">
+            <CardTilt className="lg:w-1/3 w-full h-[50vh] md:h-[60vh] lg:h-[80vh] rounded-md border-hsla overflow-hidden card">
                 <Card 
                 src={'videos/anim6.mp4'}
                 title={<>Kiyota<b>k</b>a Ayan<b>k</b>oji</>}
@@ -64,27 +99,27 @@ const Features = () => {
                 he blends into the background."
                 isCommingSoon={"Classroom Of Elites"}
                 />
-            </div>
+            </CardTilt>
             <div className="w-full gap-7 flex">
               <div className="w-1/2 hidden lg:flex flex-col h-full gap-7">
-              <div className='h-1/2 border-hsla overflow-hidden rounded-md card'>
+              <CardTilt className='h-1/2 border-hsla overflow-hidden rounded-md card'>
                  <Card 
                 src={'videos/anim3.mp4'}
                 title={<>Sa<b>n</b>ji</>}
                 description="Sanji, the Black Leg, fights with fiery kicks and a chef’s heart — a warrior who defends his crew with flavor and fury."
                 isCommingSoon={"One Piece"}
                 />
-               </div>
-               <div className='h-1/2 border-hsla overflow-hidden rounded-md card'>
+               </CardTilt>
+               <CardTilt className='h-1/2 border-hsla overflow-hidden rounded-md card'>
                  <Card 
                 src={'videos/feature-4.mp4'}
                 title={"BTUG"}
                 description=""
                 isCommingSoon={""}
                 />
+               </CardTilt>
                </div>
-               </div>
-               <div className="w-2/2 min-h-[60vh] lg:h-full rounded-md border-hsla overflow-hidden card">
+               <CardTilt className="w-2/2 min-h-[60vh] lg:h-full rounded-md border-hsla overflow-hidden card">
                 <Card 
                 src={'videos/anim4.mp4'}
                 title={<>Kujo<b>r</b>o Re<b>n</b>goku</>}
@@ -92,11 +127,11 @@ const Features = () => {
                 With his blazing sword and radiant smile, he inspires courage even in despair, standing as a beacon of hope against the darkness."
                 isCommingSoon={"Demon Slayer"}
                 />
-               </div>
+               </CardTilt>
             </div>
         </div>
          <div className='flex  lg:flex-row flex-col-reverse mt-7  w-full gap-7'>
-                <div className='w-full relative lg:w-[40%] h-[60vh] card border-hsla bg-[var(--voilet-300)] 
+                <CardTilt className='w-full relative lg:w-[40%] h-[60vh] card border-hsla bg-[var(--voilet-300)] 
                 rounded-md px-2 py-3 overflow-hidden'>
                     <h1 className='hero-heading  !text-6xl text-[#121212]'>
                       <b>M</b>ore <br/>  Co<b>m</b>ming<br/> S<b>o</b>on
@@ -104,8 +139,8 @@ const Features = () => {
                     <div className='absolute bottom-2 right-3'>
                         <Button leftIcon={<TiLocationArrow className='text-4xl md:text-5xl lg:text-7xl' />} />
                     </div>
-                </div>
-                <div className='w-full lg:w-[60%] h-[60vh] card border-hsla rounded-md overflow-hidden'>
+                </CardTilt>
+                <CardTilt className='w-full lg:w-[60%] h-[60vh] card border-hsla rounded-md overflow-hidden'>
                     <Card src={'/videos/animLast.mp4'}
                     title={<>Rev<b>e</b>ge G<b>i</b>rl</>}
                     description="闇に溶け込むような黒髪と、赤い瞳に宿る静かな狂気。白い百合が添える純潔は、胸元に散る紅で汚され、
@@ -113,7 +148,7 @@ const Features = () => {
                     を同時に纏う存在のように。"
                     isCommingSoon={<><b>ダークギャザリング</b></>}
                     />
-                </div>
+                </CardTilt>
             </div>
        </div>
     </section>
