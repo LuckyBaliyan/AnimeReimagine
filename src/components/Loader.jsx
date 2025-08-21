@@ -25,7 +25,7 @@ const Loader = ({param = "HOME",loadingState}) => {
         clipPath:"inset(0 0 0 100%)",
         duration:1.5,
         ease:"ease.inOut",
-        delay:0.5,
+        delay:1,
        })
     },[])
 

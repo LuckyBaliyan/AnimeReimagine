@@ -121,9 +121,9 @@ const Hero = () => {
 
   return (
     <>
-    <div className='fixed flex-center z-[100] h-dvh w-screen overflow-hidden pointer-events-none'>
+    {/*<div className='fixed flex-center z-[100] h-dvh w-screen overflow-hidden pointer-events-none'>
        <Loader loadingState={loading}/>
-    </div>
+    </div>*/}
     <div id="main" className='relative h-dvh w-screen overflow-hidden'>
         <h1 className='hero-heading text-[#0d0d0d] whitespace-pre-wrap !text-[10rem] lg:text-8xl absolute top-0 left-0 mt-2 ml-3'>Reima<br/>
             gine</h1>
