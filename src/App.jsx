@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import useLenisScroll from './hooks/lenis/useLenis'
 import About from './components/About';
 import NavBar from './components/NavBar';
+import Features from './components/Features';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <NavBar />
         <Hero />
         <About/>
+        <Features/>
     </main>
   )
 }

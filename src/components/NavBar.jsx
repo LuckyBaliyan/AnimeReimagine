@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {useRef} from 'react';
 import Button from './Button';
 import { TiLocation, TiLocationArrow } from 'react-icons/ti';
+import { useWindowScroll } from 'react-use';
+import gsap from 'gsap';
 
 const NavBar = () => {
 
@@ -25,6 +27,30 @@ const NavBar = () => {
         audioElement.current.pause();
       }
     },[isAudioPlaying])
+
+    const [lastScrollY,setLastScrollY] = useState(0);
+    const [isNavVisible,setIsNavVisible] = useState(true);
+
+    const { y: currentScrollY } = useWindowScroll();
+
+    useEffect(()=>{
+      if(currentScrollY === 0){
+        setIsNavVisible(true);
+      }else if(currentScrollY > lastScrollY){
+        setIsNavVisible(false);
+      }else if(currentScrollY < lastScrollY){
+        setIsNavVisible(true);
+      }
+      setLastScrollY(currentScrollY)
+    },[currentScrollY])
+
+    useEffect(()=>{
+     gsap.to(navContainerRef.current,{
+      y:isNavVisible ? 0:-100,
+      opacity:isNavVisible ? 1:0,
+      duration:0.2,
+     })
+    },[isNavVisible])
 
   return (
     <div ref={navContainerRef} className='fixed inset-x-0 top-4 z-50 h-16 border-none transition-all

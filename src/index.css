@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @import url("https://fonts.cdnfonts.com/css/general-sans");
 
-
 body {
   width: 100dvw;
   overflow-x: hidden;
@@ -162,6 +161,10 @@ background-size: 120px 120px;*/
 
   .bento-title {
     @apply uppercase md:text-6xl text-4xl font-black font-[zentry];
+  }
+
+  .card{
+    @apply transition-all origin-center ease-in-out duration-500 hover:scale-95 delay-100;
   }
 
   .story-img-container {
