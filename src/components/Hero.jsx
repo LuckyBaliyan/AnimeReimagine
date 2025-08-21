@@ -90,8 +90,8 @@ const Hero = () => {
                 //clipPath:'polygon(0 0, 100% 0, 84% 78%, 15% 77%)',
                 //clipPath:'polygon(18% 8%, 95% 23%, 80% 92%, 14% 64%)'
                 //clipPath:'polygon(14% 0, 100% 0, 82% 100%, 9% 74%)'
-                //clipPath:'polygon(14% 0%, 77% 33%, 85% 64%, 8% 66%)',
-                opacity:0,
+                //clipPath:'polygon(14% 0%, 77% 33%, 85% 64%, 8% 66%)'
+                clipPath:' polygon(14% 0%, 77% 33%, 85% 64%, 8% 66%)',
             })
         }
         else{
@@ -103,12 +103,10 @@ const Hero = () => {
         scale:1,
        })
        }
-
+       
        gsap.from('#video-frame',{
         clipPath:'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
         ease:"power1.inOut",
-        scale:1,
-        opacity:1,
         scrollTrigger:{
             trigger:'#video-frame',
             start:'center center',
