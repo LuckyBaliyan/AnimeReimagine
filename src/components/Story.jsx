@@ -78,7 +78,7 @@ const Story = () => {
                     </p>
 
                    <Button id="relm-btn" title={"Enter The Realm"} 
-                   classContainer={"mt-5 bg-[var(--blue-50)] py-1 hover:bg-[var(--voilet-300)] hover:text-[var(--blue-50)] transition"}/>
+                   classContainer={"mt-5 bg-[var(--blue-50)] py-1 active:bg-[var(--voilet-300)] active:text-bg[var(--blue-50)] hover:bg-[var(--voilet-300)] hover:text-[var(--blue-50)] transition"}/>
                 </div>
             </div>
         </div>

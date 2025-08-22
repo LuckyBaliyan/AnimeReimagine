@@ -4,7 +4,7 @@ import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
 import { useRef } from 'react';
 
-const CardTilt = ({children,className=''})=>{
+export const CardTilt = ({children,className='',offsetMargin=10})=>{
    const [transfromStyle,setTransformStyle] = useState('');
    
    const itemRef = useRef(null);
@@ -17,8 +17,8 @@ const CardTilt = ({children,className=''})=>{
        const relativeX = (e.clientX - left) / width;
        const relativeY = (e.clientY - top) / height;
    
-       const tiltX = (relativeY - 0.5)* 10;
-       const tiltY = (relativeX - 0.5)* -10;
+       const tiltX = (relativeY - 0.5)* offsetMargin;
+       const tiltY = (relativeX - 0.5)* -offsetMargin;
    
        const newTransform = `perspective(700px) rotateX(${tiltX}deg)
        rotateY(${tiltY}deg) scale(0.95)`;
@@ -37,6 +37,7 @@ return(
     </div>
   )
 }
+
 
 const Features = () => {
   return (
