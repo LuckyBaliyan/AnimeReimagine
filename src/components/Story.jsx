@@ -1,6 +1,8 @@
 import React,{useRef} from 'react'
 import AnimatedTitle from './AnimatedTitle';
 import gsap from 'gsap';
+import RoundedCorners from './RoundedCorners';
+import Button from './Button';
 
 const Story = () => {
 
@@ -53,16 +55,30 @@ const Story = () => {
                     The St<b>o</b>ry Of A <br />
                     Hidden Realm
                 </h1>
-                <div className="story-img-container mix-blend-difference -mt-5">
+                <div className="story-img-container mix-blend-difference -mt-10">
                     <div className="story-img-mask">
                         <div ref={frameRef} className="story-img-content rounded-2xl">
-                            <img src="/img/entrance.webp" alt="entrance"  className='object-contain'
+                            <img src="/img/entrance.webp" alt="entrance" className='object-contain'
                             onMouseLeave={handleMouseLeave}
                             onMouseUp={handleMouseLeave}
                             onMouseEnter={handleMouseLeave}
                             onMouseMove={handleMouseMove}/>
                         </div>
                     </div>
+                    <RoundedCorners />
+                </div>
+            </div>
+
+            <div className="-mt-70 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
+                <div className="flex h-full w-fit flex-col items-center md:items-start">
+                    <p className='mt-3 max-w-sm text-center font-["circular-web"] text-[var(--blue-50)] md:text-start'>
+                      Beyond the veil of reality lies a hidden realm where shadows breathe and secrets whisper.
+                      Forgotten legends stir in silence, waiting for those brave enough to uncover them.
+                      Every step deeper unravels mysteries that blur the line between myth and truth.
+                    </p>
+
+                   <Button id="relm-btn" title={"Enter The Realm"} 
+                   classContainer={"mt-5 bg-[var(--blue-50)] py-1 hover:bg-[var(--voilet-300)] hover:text-[var(--blue-50)] transition"}/>
                 </div>
             </div>
         </div>
