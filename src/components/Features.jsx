@@ -73,7 +73,7 @@ const Features = () => {
                 description="Kento Nanami, a man of quiet intensity, 
                 serves as a major supporting character in Jujutsu Kaisen. 
                 Once a student at Tokyo Jujutsu High, he walked the halls as an underclassman 
-                alongside the legendary Satoru Gojo and Suguru Geto. But Nanami's journey diverged early."
+                alongside the legendary Satoru Gojo and Suguru Geto."
                 isCommingSoon={"JJK"}
                 />
             </CardTilt>

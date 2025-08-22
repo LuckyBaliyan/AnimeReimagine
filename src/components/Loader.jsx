@@ -79,13 +79,13 @@ const Loader = ({param = "HOME",loadingState}) => {
    },[loadingState])
 
   return (
-    <div ref={loaderRef} className='absolute top-0 left-0 w-full h-full overflow-hidden bg-[#222222]'>
-       <div ref={clipRef} className='absolute top-0 left-0  w-full h-full bg-[#2F2F2F] loderMask overflow-hidden'>
+    <div ref={loaderRef} className='absolute top-0 left-0 w-full h-full overflow-hidden bg-[var(--voilet-300)]'>
+       <div ref={clipRef} className='absolute top-0 left-0  w-full h-full bg-[#000] loderMask overflow-hidden'>
        </div>
        <div className="mask px-8 py-12">
            <h1 className='mask hero-heading text-[var(--blue-50)]'>{param.split('').
             map((letter,index)=>(
-                <span id='stagger-up' className='inline-block translate-y-[100%]' key={index}>{letter}</span>
+                <span id='stagger-up' className='inline-block text-[var(--blue-50)] translate-y-[100%]' key={index}>{letter}</span>
             ))}
             </h1>
         </div>

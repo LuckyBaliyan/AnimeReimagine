@@ -40,8 +40,10 @@ const Contact = () => {
                     T<b>o</b>gether
                 </p>
 
-                <Button title="Contact Me" 
+               <a href="mailTo:baliyanlucky85@gmail.com" target='_blank'>
+                 <Button title="Contact Me" 
                 classContainer={"mt-10 cursor-pointer bg-[var(--blue-50)]"}/>
+               </a>
             </div>
         </div>
     </div>
