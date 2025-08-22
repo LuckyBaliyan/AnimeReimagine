@@ -28,8 +28,8 @@ const Footer = () => {
                 Reimagine
                </h1>
             </div>
-            <CardTilt offsetMargin={30} className='clip-footer cursor-pointer sm:w-[90%] sm:scale-90 rounded-xl overflow-hidden  px-5  lg:w-fit lg:absolute  size-120'>
-               <img src="/img/anim1.png" alt="" className='object-cover rounded-xl w-[100%] h-[100%] z-[40]'/>
+            <CardTilt offsetMargin={30} className='clip-footer cursor-pointer sm:w-[90%]  rounded-xl overflow-hidden  px-5  lg:w-fit lg:absolute  size-120'>
+               <img src="/img/anim1.png" alt="" className='object-cover rounded-xl w-[100%]  h-[100%] z-[40]'/>
             </CardTilt>
         </div>
         <div className="container mx-auto flex flex-col items-center
